@@ -1,8 +1,8 @@
-const calcWidth = 445;
-const calcHeight = 550;
+const calcWidth = 455;
+const calcHeight = 520;
 
 //extra border width that accounts for div being too wide for container
-const borderAllowance = 5;
+const borderAllowance = 15;
 
 const calculator = document.querySelector('#calculator');
 //the div has to have some sort of concrete content (text/pics, not just
@@ -11,8 +11,10 @@ calculator.style.width = calcWidth + 'px';
 calculator.style.height = calcHeight + 'px';
 //calculator.style.backgroundColor = 'lightgray';
 calculator.style.border = '2px solid lightblue';
-
+calculator.style.backgroundColor = 'aliceblue'
+calculator.style.fontFamily = 'helvetica';
 const screen = document.querySelector('#screen');
+
 //screen is 1/4 height of calc
 screen.style.height = calcHeight / 4 + 'px';
 screen.style.width = calcWidth;
@@ -20,6 +22,8 @@ screen.textContent = "0";
 screen.style.borderColor = 'blue';
 screen.style.textAlign = 'right';
 screen.style.backgroundColor = 'white';
+
+const screenText = document.querySelector("#screenText");
 
 //TODO fix the padding and margins etc on calc so numbers dont wiggle
 
@@ -30,7 +34,7 @@ lowerCalculator.style.display = 'flex';
 
 //TODO the error is that its dividing 400px by a num. find a way to
 //parse out the px
-const buttonSize = calcWidth / 4 + 'px';
+const buttonSize = calcWidth / 5 + 'px';
 
 //numbers contains 0-9, ".", and "="
 const numbers = document.querySelector('#numbers');
@@ -49,6 +53,7 @@ for (let i = 1; i < 10; i++) {
     num.textContent = i;
     //this line removes it from memory and makes it permanent
     numbers.appendChild(num);
+    
 }
 
 const zero = document.createElement('div');
@@ -111,13 +116,16 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].style.height = buttonSize;
     buttons[i].style.textAlign = "center";
     buttons[i].style.backgroundColor = "white";
+    buttons[i].style.border = "1px solid transparent";
+    buttons[i].style.margin = '2px';
+    buttons[i].style.lineHeight = buttonSize;
     buttons[i].addEventListener('mouseover', function(e) {
         //TODO im guessing the border margins are causing the calc 
         //to mess up the width
         buttons[i].style.border = '1px solid lightblue';
     })
     buttons[i].addEventListener('mouseout', function(e) {
-        buttons[i].style.border = 'none';
+        buttons[i].style.border = '1px solid transparent';
     })
 }
 
